@@ -1,0 +1,15 @@
+.word{
+	
+	color:red;
+}
+.menu{
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+	color:blue;
+	max-width: 1300px;
+	
+}
+body{
+	background-image: url("wallpaper.png"); 
+}
