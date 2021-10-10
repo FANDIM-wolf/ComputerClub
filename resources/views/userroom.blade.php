@@ -28,13 +28,15 @@
  
 <p>Общее время в клубе: {{$data_about_user->common_time}}<p> 
 </div>
- 
+
+
+
 <div id="blocK_img"> 
-<img src="/img/gta5.png" id="game_style" >
+<img src="img/{{$best_game->image}}" id="game_style" >
 </div>
 </div>
 
-<p id="favgame">game</p> 
+<p id="favgame">{{$best_game->hours}} часов в игре</p> 
 
 
 <h2 style="margin-left:10%; margin-top: 20%;">Советуем поиграть</h2>

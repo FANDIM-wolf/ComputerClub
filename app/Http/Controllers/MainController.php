@@ -50,6 +50,7 @@ class MainController extends Controller
     public function show_user_room(Request $request){
         
         $name =  Cookie::get('name');
+
         // var name is empty or not ?
         if($name == null){
             return redirect('/auth');
@@ -59,13 +60,24 @@ class MainController extends Controller
             $user = DB::table('users')->where('name',$name)->first();
             //$games = DB::table('list_of_games')->all();
             $games = DB::select('SELECT * FROM list_of_games');
+            $fgames = DB::table('games')->get();
+            //get favourite user gam
+            foreach ($fgames as $game) {
+                $best_game_hour = 2;
+                if($game->hours > $best_game_hour){
+                    $best_game_hour = $game->hours;
+                    $best_game = $game; 
+                }
+            }
+            
+            
         }
         
             
         //$user_in_room->password = $request->cookie('password');
         
 
-        return view('userroom' , ['user'=> $name , 'data_about_user'=> $user ,'games' => $games ]);
+        return view('userroom' , ['user'=> $name , 'data_about_user'=> $user ,'games' => $games , 'best_game' => $best_game ]);
     }
 
     //return login page 
